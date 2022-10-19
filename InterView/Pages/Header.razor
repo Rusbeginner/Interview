@@ -1,0 +1,49 @@
+﻿
+<MudGrid>
+    <MudItem md="4" lg="4" xs="4">
+        
+        <MudSelect Margin="Margin.Dense" T="int" Label="Categoria" Variant="Variant.Outlined" SelectedValues="@selectedValueCategories" MultiSelection=false SelectedValuesChanged=" (values) => OnCategoriesValuesChanged(values)">
+            @if (Categories != null)
+            {
+                foreach (var category in Categories)
+                {
+                    <MudSelectItem Value="@category.IdCategory">@category.Name</MudSelectItem>
+                }
+            }
+        </MudSelect>
+               
+    </MudItem>
+    <MudItem md="4" lg="4" xs="4">
+        <MudSelect Margin="Margin.Dense" T="int" Label="Producto" Variant="Variant.Outlined" SelectedValues="@selectedValueProducts" SelectedValuesChanged=" (values) => OnProductsValuesChanged(values)">
+            @if (Products != null)
+            {
+                foreach (var product in Products)
+                {
+                    <MudSelectItem Value="@product.IdProducto">@product.Name</MudSelectItem>
+                }
+            } 
+        </MudSelect>
+        <MudInputLabel Style="text-align: center justify:match-parent">Sales by Month for:</MudInputLabel>
+    </MudItem>
+    <MudItem md="4" lg="4" xs="4">
+        <MudSelect Margin="Margin.Dense" T="int" Label="Marca" Variant="Variant.Outlined" SelectedValues="@selectedValueMarks" SelectedValuesChanged=" (values) => OnMarksValuesChanged(values)">
+            @if(Marks != null)
+            {
+                foreach (var mark in Marks)
+                {
+                    <MudSelectItem Value="@mark.IdMark">@mark.Name</MudSelectItem>
+                }
+            }
+        </MudSelect>
+    </MudItem>
+</MudGrid>
+
+<div>
+    <MudChart ChartType="ChartType.Bar" ChartSeries="@Series"  XAxisLabels="@XAxisLabels" Width=100% Height="400px"></MudChart>
+</div>
+
+
+
+
+
+
